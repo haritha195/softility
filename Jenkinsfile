@@ -1,36 +1,36 @@
 node {
     // reference to maven
-    // ** NOTE: This 'maven-3.6.1' Maven tool must be configured in the Jenkins Global Configuration.   
+    // ** NOTE: This 'maven-3.6.1' Maven tool must be configured in the Jenkins Global Configuration.
     def mvnHome = tool 'maven-3.8.5'
 
     // holds reference to docker image
     def dockerImage
     // ip address of the docker private repository(nexus)
-    
+
     def dockerRepoUrl = "localhost:8083"
     def dockerImageName = "hello-world-java"
     def dockerImageTag = "${dockerRepoUrl}/${dockerImageName}:${BRANCH_NAME}"
-    
+
     stage('Clone Repo') { // for display purposes
       // Get some code from a GitHub repository
-      git branch: 'jenkins', url: 'https://github.com/goutamjaiswal214/devops-end-to-end.git'
+      git branch: 'master', url: 'https://github.com/haritha195/softility.git'
       // Get the Maven tool.
       // ** NOTE: This 'maven-3.6.1' Maven tool must be configured
-      // **       in the global configuration.           
+      // **       in the global configuration.
       mvnHome = tool 'maven-3.8.5'
-    }    
-  
+    }
+
     stage('Build Project') {
       // build project via maven
       sh "'${mvnHome}/bin/mvn' -f hello-world-src/pom.xml -Dmaven.test.failure.ignore clean package"
     }
-		
+
     stage('Build Docker Image') {
       // build docker image
       //sh "ls -all /var/run/docker.sock"
       sh "echo $BRANCH_NAME"
-      sh "mv ./hello-world-src/target/hello*.jar ./data" 
-      
+      sh "mv ./hello-world-src/target/hello*.jar ./data"
+
       dockerImage = docker.build("hello-world-java","-f hello-world-src/Dockerfile .")
 
       sh "docker tag hello-world-java:latest us-east1-docker.pkg.dev/molten-medley-415817/hello-world/${dockerImageName}:${BRANCH_NAME}"
@@ -53,9 +53,9 @@ node {
     stage('Trivy Scan'){
       sh "trivy image us-east1-docker.pkg.dev/molten-medley-415817/hello-world/${dockerImageName}:${BRANCH_NAME}"
     }
-   
+
     stage('Pushing Docker Image'){
-      
+
       // deploy docker image to nexus
       withCredentials([file(credentialsId: 'gcr-file', variable: 'GC_KEY')]){
         sh "echo \"Docker Image Tag Name: ${dockerImageTag}\""
