@@ -42,10 +42,10 @@ node {
        sh '''
         cd hello-world-src
         mvn clean verify sonar:sonar \
-        -Dsonar.projectKey=java-app \
-        -Dsonar.projectName='java-app' \
-        -Dsonar.host.url=http://34.16.178.168:9000 \
-        -Dsonar.token=$SONAR_TOKEN
+          -Dsonar.projectKey=softility-java-app \
+          -Dsonar.projectName='softility-java-app' \
+          -Dsonar.host.url=http://34.16.191.60:9000 \
+          -Dsonar.token=$SONAR_TOKEN
        '''
       }
     }
