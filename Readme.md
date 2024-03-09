@@ -14,7 +14,7 @@
 | Kubernetes | Completed | https://console.cloud.google.com/kubernetes/clusters/details/us-west4/molten-medley-415817-gke/details?cloudshell=true&hl=en&project=molten-medley-415817 https://github.com/haritha195/softility/blob/master/Jenkinsfile#L74 |
 | GKE | Completed | https://console.cloud.google.com/kubernetes/list/overview?cloudshell=true&hl=en&project=molten-medley-415817 |
 | Prometheus | Completed | http://34.125.56.68:8080/
-| Grafana | Completed | http://34.125.136.165:3000/login
+| Grafana | Completed | http://34.125.136.165:3000/login |
 
 ## Jenkins URL
 [Link to Jenkins Server](http://34.125.67.49:8080/job/softility-project/job/master/)
