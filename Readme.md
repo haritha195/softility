@@ -11,7 +11,7 @@
 | Trivy Scan | Completed | https://github.com/haritha195/softility/blob/master/Jenkinsfile#L53 |
 | Jenkins | Completed | http://34.125.67.49:8080/ |
 | Docker | Completed | https://github.com/haritha195/softility/blob/master/Jenkinsfile#L28 |
-| Kubernetes | Completed |  |
+| Kubernetes | Completed | https://github.com/haritha195/softility/blob/master/Jenkinsfile#L74 |
 | GKE | Completed | https://console.cloud.google.com/kubernetes/list/overview?cloudshell=true&hl=en&project=molten-medley-415817 |
 | Prometheus | Completed | http://34.125.56.68:8080/
 | Grafana | Completed | http://34.125.136.165:3000/login
