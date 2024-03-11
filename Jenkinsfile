@@ -8,7 +8,7 @@ node {
     def dockerImageTag = "${dockerRepoUrl}/${dockerImageName}:${BRANCH_NAME}"
 
     stage('Clone Repo') { // for display purposes
-      git branch: 'master', url: 'https://github.com/haritha195/softility.git'
+      git branch: '${BRANCH_NAME}', url: 'https://github.com/haritha195/softility.git'
       mvnHome = tool 'maven-3.8.5'
     }
 
